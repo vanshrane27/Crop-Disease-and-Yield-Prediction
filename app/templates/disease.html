@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crop Disease Prediction</title>
+</head>
+<body>
+    <h1>Crop Disease Prediction</h1>
+    <form method="POST" enctype="multipart/form-data">
+        <label for="crop_image">Upload Crop Image:</label>
+        <input type="file" name="crop_image" id="crop_image" required>
+        <button type="submit">Predict Disease</button>
+    </form>
+    {% if prediction %}
+        <h2>Prediction: {{ prediction }}</h2>
+    {% endif %}
+    <br><br>
+    <button onclick="window.location.href='/'">Go Home</button>
+</body>
+</html>
