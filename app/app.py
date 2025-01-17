@@ -1,12 +1,17 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash
 import openai
 import os
 from werkzeug.utils import secure_filename
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
 
 app = Flask(__name__)
 
 # Set your OpenAI API key
 openai.api_key = 'your_openai_api_key_here'
+
+app.secret_key = 'komalvansh2527'  # Replace with a strong secret key
 
 # Function to process the crop image and convert it to text (assuming you have an image captioning or description mechanism)
 def process_image(image):
@@ -66,6 +71,40 @@ def yield_prediction():
         return render_template('yield.html', prediction=prediction)
 
     return render_template('yield.html', prediction=None)
+
+
+@app.route('/contact', methods=['GET', 'POST'])
+def contact():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        message = request.form['message']
+
+        try:
+            # Email configuration
+            sender_email = "spidervr300.com"  # Replace with your email
+            sender_password = "xtsnxnwzzqigttlf"  # Replace with App Password
+            recipient_email = "vansh555.vr@gmail.com"
+
+            # Create email content
+            msg = MIMEMultipart()
+            msg['From'] = sender_email
+            msg['To'] = recipient_email
+            msg['Subject'] = "New Contact Form Submission"
+            body = f"Name: {name}\nEmail: {email}\nMessage:\n{message}"
+            msg.attach(MIMEText(body, 'plain'))
+
+            # Send email
+            with smtplib.SMTP('smtp.gmail.com', 587) as server:
+                server.starttls()
+                server.login(sender_email, sender_password)
+                server.sendmail(sender_email, recipient_email, msg.as_string())
+
+            flash('Your message has been sent successfully!', 'success')
+        except Exception as e:
+            flash(f"An error occurred while sending the message: {e}", 'error')
+
+    return render_template('contact.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

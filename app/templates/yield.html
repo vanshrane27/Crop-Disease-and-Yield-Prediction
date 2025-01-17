@@ -2,25 +2,133 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Crop Yield Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yield Prediction</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #4CAF50;
+            overflow: hidden;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            background-color: #45a049;
+            border-radius: 5px;
+        }
+
+        .navbar .title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Content Section */
+        .content {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .content h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+
+        .content form {
+            margin: 20px 0;
+        }
+
+        .content input[type="text"] {
+            padding: 10px;
+            font-size: 1em;
+            width: 60%;
+            margin: 10px 0;
+        }
+
+        .content button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .content button:hover {
+            background-color: #45a049;
+        }
+
+        .content .result {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <h1>Crop Yield Prediction</h1>
-    <form method="POST">
-        <label for="crop_type">Crop Type:</label>
-        <input type="text" name="crop_type" id="crop_type" required><br><br>
 
-        <label for="location">Location:</label>
-        <input type="text" name="location" id="location" required><br><br>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="title">Crop Prediction App</div>
+        <div>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/products">Products</a>
+            <a href="/contact">Contact Us</a>
+        </div>
+    </div>
 
-        <button type="submit">Predict Yield</button>
-    </form>
+    <!-- Content Section -->
+    <div class="content">
+        <h1>Yield Prediction</h1>
+        <p>Enter crop type and location to predict the yield.</p>
+        <form method="POST">
+            <input type="text" name="crop_type" placeholder="Enter Crop Type" required><br>
+            <input type="text" name="location" placeholder="Enter Location" required><br>
+            <button type="submit">Predict Yield</button>
+        </form>
+        {% if prediction %}
+        <div class="result">
+            <strong>Prediction:</strong> {{ prediction }}
+        </div>
+        {% endif %}
+    </div>
 
-    {% if prediction %}
-        <h2>Prediction: {{ prediction }}</h2>
-    {% endif %}
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Crop Prediction App. All rights reserved.
+    </footer>
 
-    <br><br>
-    <button onclick="window.location.href='/'">Go Home</button>
 </body>
 </html>

@@ -2,11 +2,115 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Crop Prediction App</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #4CAF50;
+            overflow: hidden;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            font-weight: bold;
+        }
+
+        .navbar a:hover {
+            background-color: #45a049;
+            border-radius: 5px;
+        }
+
+        .navbar .title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(to right, #4CAF50, #45a049);
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .hero button {
+            background-color: white;
+            color: #4CAF50;
+            padding: 15px 30px;
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .hero button:hover {
+            background-color: #e8e8e8;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            background-color: #4CAF50;
+            color: white;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Crop Prediction App</h1>
-    <button onclick="window.location.href='/disease'">Crop Disease Prediction</button>
-    <button onclick="window.location.href='/yield'">Crop Yield Prediction</button>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="title">Crop Prediction App</div>
+        <div>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/products">Products</a>
+            <a href="/contact">Contact Us</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Welcome to the Crop Prediction App</h1>
+        <p>Revolutionize agriculture with AI-powered crop predictions.</p>
+        <button onclick="window.location.href='/disease'">Predict Crop Disease</button>
+        <button onclick="window.location.href='/yield'">Predict Crop Yield</button>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 Crop Prediction App. All rights reserved.
+    </footer>
+
 </body>
 </html>
